@@ -1,0 +1,570 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const revistas = [
+  { name: 'Cuadernos de Psicología del Deporte', url: 'http://revistas.um.es/cpd' },
+  { name: 'Revista de Psicología del Deporte', url: 'http://www.rpd-online.com/' },
+  { name: 'Revista de Psicología Aplicada al Deporte y el Ejercicio Físico (RPADEF)', url: 'http://www.revistapsicologiaaplicadadeporteyejercicio.org/' },
+  { name: 'Revista Iberoamericana de Psicología del Ejercicio y el Deporte', url: 'http://www.webs.ulpgc.es/riped' },
+  { name: 'SportDiscus', url: 'http://web.ebscohost.com/ehost/search/advanced', note: 'Recurso por suscripción · Universidades del consorcio Madroño' },
+];
+
+const enlaces = [
+  { name: 'American Board on Sport Psychology', url: 'http://www.americanboardofsportpsychology.org/' },
+  { name: 'Asociación Canaria de Psicología del Deporte', url: 'http://www.webs.ulpgc.es/acapde/' },
+  { name: 'Association for the Advance of Applied Sport Psychology', url: 'http://appliedsportpsych.org/home' },
+  { name: 'Colegio Oficial de Psicólogos – Lista de psicología del deporte', url: 'http://www.cop.es/listas/deporte.htm' },
+  { name: 'Colegio Oficial de Psicólogos – Ciberpsicología en España', url: 'http://www.cop.es/psicologiatelematica/' },
+  { name: 'ERIC – Base de datos de revistas educativas', url: 'http://www.eric.ed.gov/' },
+  { name: 'European Federation of Sport Psychology (FEPSAC)', url: 'http://www.fepsac.com/' },
+  { name: 'Federación Española de Psicología del Deporte', url: 'http://www.psicologiadeporte.org/' },
+  { name: 'Grupo de Investigación en Biopsicología del Deporte (ULPGC)', url: 'http://www.gi.ulpgc.es/psicologiadeporte/' },
+  { name: 'Inesport', url: 'http://www.inesport.es/' },
+  { name: 'Instituto Nacional de Educación Física', url: 'http://www.inef.upm.es/' },
+  { name: 'International Association for Sports Information (IASI)', url: 'http://www.iasi.org/' },
+  { name: 'International Society of Sport Psychology', url: 'http://www.issponline.org/' },
+  { name: 'Lictor – Página web de Psicología del Deporte', url: 'http://www.lictor.com/' },
+  { name: 'Programa de Doctorado en Comportamiento Humano (ULPGC)', url: 'http://www.webs.ulpgc.es/doctoradopsicologiadeporte/' },
+  { name: 'Psidafi – Sociedad Mexicana de Psicología del Deporte', url: 'http://www.psidafi.com/' },
+  { name: 'SIRC', url: 'http://www.sirc.ca/' },
+  { name: 'Sociedad Iberoamericana de Psicología del Deporte (SIPD)', url: 'http://www.sipd.org/' },
+];
+---
+
+<Layout title="Información de interés · AMPD" description="Premios AMPD, becas, revistas y enlaces de interés sobre psicología del deporte.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Recursos profesionales</span>
+      <h1>Información<br/>de <em>interés</em>.</h1>
+      <p class="lead">Premios, becas, revistas y enlaces para la práctica y la investigación en psicología del deporte.</p>
+    </div>
+  </section>
+
+  <!-- ÍNDICE -->
+  <section class="toc-section">
+    <div class="container">
+      <nav class="toc reveal">
+        <a href="#premios">01 · Premios AMPD</a>
+        <a href="#becas">02 · Becas</a>
+        <a href="#eventos">03 · Jornadas y eventos</a>
+        <a href="#revistas">04 · Revistas</a>
+        <a href="#enlaces">05 · Enlaces de interés</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- PREMIOS -->
+  <section id="premios" class="content-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="num-section">01</span>
+        <span class="eyebrow">Becas y premios</span>
+        <h2>Premios de<br/>la <em>AMPD</em>.</h2>
+        <p class="section-intro">La AMPD reconoce el trabajo de investigación y aplicado en el campo de la psicología del deporte a través de dos premios:</p>
+      </div>
+
+      <div class="awards">
+        <article class="award-card reveal">
+          <span class="award-tag">Bianual · Honorífico</span>
+          <h3>Premio a la trayectoria científica y/o profesional</h3>
+          <p>Se otorga a una persona de reconocido prestigio que haya hecho una notable contribución a la disciplina a lo largo de su trayectoria profesional, ya sea en investigación, práctica profesional o ambas.</p>
+          <details class="award-details">
+            <summary>Ver bases del premio</summary>
+            <ol>
+              <li>De carácter honorífico, se otorga bianualmente a una persona de reconocido prestigio.</li>
+              <li>El jurado lo compone: Presidente AMPD (preside), Vicepresidente AMPD (secretario), dos académicos de reconocido prestigio, y un representante del Colegio Oficial de Psicólogos (Sección Psicología del Deporte).</li>
+              <li>Las candidaturas pueden ser presentadas por personas individuales, colectivos o asociaciones, aportando nombre, breve semblanza y currículum vitae.</li>
+              <li>El jurado podrá otorgar el premio o declararlo desierto. El fallo es inapelable.</li>
+              <li>El premio se entrega en un acto científico donde el premiado dará una conferencia sobre la temática de su elección.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="award-card reveal">
+          <span class="award-tag">Anual · Con dotación económica</span>
+          <h3>Premio a la mejor tesis doctoral y trabajo de fin de máster</h3>
+          <p>Se otorga anualmente a la mejor tesis doctoral o trabajo de fin de máster en psicología de la actividad física y el deporte, defendido en alguna de las universidades madrileñas durante el curso académico anterior.</p>
+          <details class="award-details">
+            <summary>Ver bases del premio</summary>
+            <ol>
+              <li>Se otorgará anualmente entre las tesis doctorales y TFM presentados y defendidos en universidades madrileñas en el curso académico anterior al de la convocatoria.</li>
+              <li>El jurado lo compone: Presidente AMPD, Vicepresidente AMPD, dos académicos de prestigio y un representante del COP (Sección Psicología del Deporte).</li>
+              <li>Candidaturas presentadas por los autores o sus directores, con nombre, título del trabajo, certificado universitario con fecha de defensa y calificación, y firma de aceptación de las bases.</li>
+              <li>El jurado puede otorgar el premio, concederlo ex aequo o declararlo desierto. Fallo inapelable.</li>
+              <li>El premio incluye certificado firmado por presidencia y vicepresidencia, gratificación económica (cuantía aprobada en asamblea anual) y afiliación a la AMPD por dos años.</li>
+              <li>Se entrega en la asamblea general anual de la AMPD.</li>
+            </ol>
+          </details>
+        </article>
+      </div>
+
+      <a href="https://ampd.es/uploads/1/2/3/2/123265462/iii_edicion_premios_ampd_-_bases_2023__1_.pdf" class="download-pdf reveal" target="_blank" rel="noopener">
+        <span class="pdf-icon">PDF</span>
+        <div>
+          <strong>Bases III Edición Premios AMPD</strong>
+          <small>490 KB · Documento PDF</small>
+        </div>
+        <span class="arrow">↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- BECAS -->
+  <section id="becas" class="content-section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="num-section flame">02</span>
+        <span class="eyebrow flame">Formación e investigación</span>
+        <h2>Becas para postgrado<br/>e <em>investigación</em>.</h2>
+      </div>
+
+      <div class="becas">
+        <a href="https://aepsad.culturaydeporte.gob.es/actualidad/2019/mayo/20190527-becas-centro-medicina-deporte.html" class="beca-card reveal" target="_blank" rel="noopener">
+          <span class="beca-tag">AEPSAD</span>
+          <h3>Becas de formación de postgrado en psicología del deporte</h3>
+          <p>La AEPSAD convoca becas de formación de postgrado para el Centro de Medicina del Deporte.</p>
+          <span class="beca-link">aepsad.culturaydeporte.gob.es →</span>
+        </a>
+
+        <a href="https://www.csd.gob.es/es/el-csd-recupera-las-ayudas-para-la-investigacion-en-ciencias-del-deporte" class="beca-card reveal" target="_blank" rel="noopener">
+          <span class="beca-tag">CSD</span>
+          <h3>Becas de investigación en ciencias del deporte</h3>
+          <p>El Consejo Superior de Deportes recupera las ayudas para la investigación en Ciencias del Deporte.</p>
+          <span class="beca-link">csd.gob.es →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTOS -->
+  <section id="eventos" class="content-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="num-section">03</span>
+        <span class="eyebrow">Histórico</span>
+        <h2>Jornadas, cursos<br/>y <em>eventos</em>.</h2>
+      </div>
+
+      <div class="events-list">
+        <article class="event-item reveal">
+          <span class="event-year">2021</span>
+          <div>
+            <h3>III Jornada de Psicología del Deporte y Rendimiento Humano de la Comunidad de Madrid</h3>
+            <p class="event-meta">19 y 20 de noviembre de 2021 · 10 horas · Online</p>
+            <p>Reconocidas para la Acreditación de Psicólogo Experto en Psicología del Deporte del Consejo General de la Psicología de España. Organiza la Sección de Psicología de la Actividad Física y el Deporte del Colegio Oficial de la Psicología de Madrid.</p>
+          </div>
+        </article>
+
+        <article class="event-item reveal">
+          <span class="event-year">2020</span>
+          <div>
+            <h3>XXI Días de la Sociedad Portuguesa de Psicología Deportiva</h3>
+            <p class="event-meta">6 y 7 de noviembre de 2020</p>
+            <p>Iniciativa anual de la Sociedad Portuguesa de Psicología del Deporte (SPPD), con ponentes como Chris Harwood (Loughborough), Duarte Araújo (Lisboa), Ken Fox (Bristol) y Rui Gomes (Minho).</p>
+          </div>
+        </article>
+
+        <article class="event-item reveal">
+          <span class="event-year">2019</span>
+          <div>
+            <h3>XVI Congreso de Psicología de la Actividad Física y del Deporte</h3>
+            <p class="event-meta">13–16 de marzo de 2019 · Zaragoza</p>
+            <p>Programa con ponencias, talleres, comunicaciones orales y simposios sobre las diferentes áreas de trabajo de la Psicología del Deporte.</p>
+          </div>
+        </article>
+
+        <article class="event-item reveal">
+          <span class="event-year">2019</span>
+          <div>
+            <h3>III Congreso Internacional sobre Fútbol, Fútbol Sala y Psicología</h3>
+            <p class="event-meta">30, 31 de mayo y 1 de junio de 2019 · USC, Santiago de Compostela</p>
+            <p>Ponencias por la mañana y talleres prácticos por la tarde en aula, pabellón polideportivo y campo de fútbol. Sesiones de póster diarias.</p>
+          </div>
+        </article>
+
+        <article class="event-item reveal">
+          <span class="event-year">2019</span>
+          <div>
+            <h3>III Jornada Internacional de Psicología del Deporte</h3>
+            <p class="event-meta">29 de marzo de 2019 · Facultad de Psicología, UAM</p>
+            <p>Organizan el Máster de Psicología de la Actividad Física y el Deporte de la UAM y la Asociación Madrileña de Psicología del Deporte. Actividad abierta y gratuita.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVISTAS -->
+  <section id="revistas" class="content-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="num-section">04</span>
+        <span class="eyebrow">Publicaciones científicas</span>
+        <h2>Revistas de<br/>Psicología del <em>Deporte</em>.</h2>
+      </div>
+
+      <div class="links-list reveal">
+        {revistas.map((r, i) => (
+          <a href={r.url} class="link-row" target="_blank" rel="noopener">
+            <span class="link-num">{String(i + 1).padStart(2, '0')}</span>
+            <div class="link-content">
+              <span class="link-name">{r.name}</span>
+              {r.note && <span class="link-note">{r.note}</span>}
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ENLACES -->
+  <section id="enlaces" class="content-section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="num-section flame">05</span>
+        <span class="eyebrow flame">Directorio</span>
+        <h2>Enlaces<br/>de <em>interés</em>.</h2>
+      </div>
+
+      <div class="links-grid">
+        {enlaces.map((e, i) => (
+          <a href={e.url} class="link-pill reveal" target="_blank" rel="noopener">
+            <span class="link-num-small">{String(i + 1).padStart(2, '0')}</span>
+            <span>{e.name}</span>
+            <span class="link-arrow-small">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  .page-hero h1 { margin: 1.5rem 0 1.5rem; }
+  .page-hero h1 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    max-width: 50ch;
+    color: var(--ink-soft);
+  }
+
+  /* TOC */
+  .toc-section {
+    padding: 2rem 0;
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .toc {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .toc a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .toc a:hover { color: var(--flame); border-color: var(--flame); }
+
+  /* SECTIONS */
+  .content-section { padding: 5rem 0; }
+  .section-dark {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .section-head {
+    margin-bottom: 4rem;
+    max-width: 700px;
+  }
+  .num-section {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-dark .num-section { color: rgba(245, 241, 232, 0.7); }
+  .section-dark .eyebrow { color: rgba(245, 241, 232, 0.85); }
+  .num-section.flame { color: var(--flame); }
+  .eyebrow.flame { color: var(--flame); }
+  .section-head h2 { margin: 1rem 0 1.5rem; }
+  .section-head h2 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  /* AWARDS */
+  .awards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 800px) {
+    .awards { grid-template-columns: 1fr; }
+  }
+  .award-card {
+    padding: 2.5rem;
+    background: var(--paper-pure);
+    border: 1.5px solid var(--ink);
+    transition: all 0.3s ease;
+  }
+  .award-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .award-tag {
+    display: inline-block;
+    background: var(--flame);
+    color: var(--paper);
+    padding: 0.3rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .award-card h3 { margin-bottom: 1rem; line-height: 1.15; }
+  .award-card p { color: var(--ink-soft); line-height: 1.6; margin-bottom: 1.5rem; }
+  .award-details {
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+  .award-details summary {
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--flame);
+    list-style: none;
+    transition: color 0.2s ease;
+  }
+  .award-details summary::-webkit-details-marker { display: none; }
+  .award-details summary::before {
+    content: '+ ';
+    font-weight: 700;
+  }
+  .award-details[open] summary::before { content: '− '; }
+  .award-details ol {
+    margin-top: 1.5rem;
+    padding-left: 1.25rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .award-details li { margin-bottom: 0.75rem; }
+
+  .download-pdf {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1.5px solid var(--ink);
+    transition: all 0.3s ease;
+    max-width: 500px;
+  }
+  .download-pdf:hover {
+    background: var(--flame);
+    border-color: var(--flame);
+    transform: translateX(8px);
+  }
+  .pdf-icon {
+    background: var(--flame);
+    color: var(--paper);
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .download-pdf:hover .pdf-icon { background: var(--ink); }
+  .download-pdf div { flex: 1; }
+  .download-pdf strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+  .download-pdf small {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(245, 241, 232, 0.6);
+  }
+  .download-pdf:hover small { color: rgba(255, 255, 255, 0.8); }
+  .download-pdf .arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  .download-pdf:hover .arrow { transform: translateY(4px); }
+
+  /* BECAS */
+  .becas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 800px) {
+    .becas { grid-template-columns: 1fr; }
+  }
+  .beca-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(245, 241, 232, 0.2);
+    transition: all 0.3s ease;
+    display: block;
+  }
+  .beca-card:hover {
+    border-color: var(--flame);
+    background: rgba(255, 77, 31, 0.05);
+    transform: translateY(-4px);
+  }
+  .beca-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--flame);
+    margin-bottom: 1rem;
+  }
+  .beca-card h3 { margin-bottom: 1rem; }
+  .beca-card p {
+    color: rgba(245, 241, 232, 0.75);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .beca-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--flame);
+    border-bottom: 1.5px solid var(--flame);
+    padding-bottom: 0.25rem;
+  }
+
+  /* EVENTOS */
+  .events-list { border-top: 1.5px solid var(--ink); }
+  .event-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1.5px solid var(--ink);
+    transition: padding 0.3s ease;
+  }
+  .event-item:hover { padding-left: 1rem; }
+  @media (max-width: 700px) {
+    .event-item { grid-template-columns: 1fr; gap: 1rem; }
+  }
+  .event-year {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--flame);
+    line-height: 1;
+    align-self: start;
+  }
+  .event-item h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+  .event-meta {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+  }
+  .event-item p:last-child {
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* REVISTAS / LINKS */
+  .links-list { border-top: 1.5px solid var(--ink); }
+  .link-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.75rem 0;
+    border-bottom: 1.5px solid var(--ink);
+    transition: all 0.3s ease;
+  }
+  .link-row:hover {
+    padding-left: 1rem;
+    background: var(--paper-pure);
+  }
+  .link-num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--flame);
+  }
+  .link-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .link-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-weight: 700;
+  }
+  .link-note {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+  .link-arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  .link-row:hover .link-arrow { transform: translate(4px, -4px); }
+
+  /* ENLACES PILLS */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 700px) {
+    .links-grid { grid-template-columns: 1fr; }
+  }
+  .link-pill {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(245, 241, 232, 0.15);
+    transition: all 0.3s ease;
+  }
+  .link-pill:hover {
+    border-color: var(--flame);
+    background: rgba(255, 77, 31, 0.08);
+  }
+  .link-num-small {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(245, 241, 232, 0.5);
+  }
+  .link-pill:hover .link-num-small { color: var(--flame); }
+  .link-pill span:nth-child(2) {
+    font-size: 0.95rem;
+  }
+  .link-arrow-small {
+    color: var(--flame);
+    transition: transform 0.3s ease;
+  }
+  .link-pill:hover .link-arrow-small { transform: translateX(4px); }
+</style>

@@ -1,0 +1,281 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const noticias = [
+  {
+    date: '25 MAY · 1 JUN 2026',
+    category: 'Webinar AMPD',
+    title: 'Inteligencia Artificial aplicada a la Psicología del Deporte',
+    excerpt: 'Webinar en dos sesiones organizado por la AMPD: Sesión 01 – Introducción a la IA (25 de mayo, 18:30h) y Sesión 02 – Herramientas y aplicaciones prácticas (1 de junio, 18:30h). Online vía Google Meet.',
+    fullText: 'Conducido por Inés C. Ruiz, vocal de la AMPD y consultora de IA. La formación abordó cómo aplicar la inteligencia artificial generativa en la práctica de la psicología del deporte: herramientas, casos de uso y aplicaciones en investigación e intervención. Gratuito para socios/as. Con descuento para socios/as de otras asociaciones de psicología del deporte.',
+    featured: true,
+  },
+  {
+    date: '02 JUN 2026',
+    category: 'Actividad AMPD',
+    title: 'Coloquio de psicología del deporte: proyección de Corredora',
+    excerpt: 'Coloquio organizado por la AMPD tras la visualización de Corredora, ópera prima de Laura García Alonso. La película aborda la salud mental en el deporte de élite a través de la historia de una corredora que sufre un brote psicótico y se ve obligada a alejarse de la alta competición.',
+    fullText: 'Corredora (estreno 29 de mayo de 2026), protagonizada por Alba Sáez, Marina Salas y Àlex Brendemühl, ofrece un retrato íntimo y riguroso de la salud mental en el deporte de élite. El coloquio posterior reunió a profesionales de la psicología del deporte para reflexionar sobre los temas que plantea la película: presión competitiva, identidad del deportista, intervención psicológica y visibilización de la salud mental en el deporte.',
+    featured: true,
+  },
+  {
+    date: '14–17 ABR 2026',
+    category: 'Congreso',
+    title: 'XIX Congreso Nacional de Psicología de la Actividad Física y del Deporte',
+    excerpt: 'II Encuentro Internacional del Entrenamiento Mental en el Deporte. Bajo el lema "Bienestar psicológico en el deporte moderno", el congreso se celebrará en Castellón de la Plana del 14 al 17 de abril de 2026.',
+    fullText: 'Cita anual de referencia para profesionales, investigadores y estudiantes del campo de la psicología del deporte en España. Una oportunidad para compartir avances, evidencia y experiencia aplicada en torno al bienestar psicológico del deportista.',
+    featured: false,
+  },
+  {
+    date: '28 NOV 2025',
+    category: 'Jornadas AMPD',
+    title: 'VI Jornadas de la AMPD',
+    excerpt: 'Jornada profesional celebrada en colaboración con la Universidad Politécnica de Madrid. Programa con mesas redondas y ponencias sobre biofeedback, gestión de equipos psicológicos, intervención y la mirada de entrenadores, deportistas y árbitros.',
+    fullText: 'Programa: Mesa redonda "Biofeedback" con Mª Martínez y M. Santolaya · "Al frente de equipos psicológicos" con E. Molleja, V. Rubio y P. de Río · Ponencia "Un modelo de intervención psicológica: de la demanda a la intervención" por A. Gordillo · Presentación de los trabajos de los III Premios AMPD · Mesa redonda con A. Langa (árbitra de baloncesto), J. del Campo (atletismo), B. Bango (gimnasia), A. Gaitero (judo) y J.L. Rodríguez (triatlón).',
+    featured: true,
+  },
+  {
+    date: '03 FEB 2021',
+    category: 'Convenio',
+    title: 'El Colegio firma un convenio de colaboración con la AMPD',
+    excerpt: 'El Colegio Oficial de la Psicología de Madrid, a través de la Sección de Psicología de la Actividad Física y del Deporte, ha firmado un convenio marco con la AMPD para potenciar el desarrollo del área en la Comunidad de Madrid.',
+    fullText: 'El Decano del Colegio, Fernando Chacón, y el Presidente de AMPD, Pablo del Río, han rubricado este acuerdo con el objetivo de aunar fuerzas para promocionar actividades formativas, estudios, investigaciones, campañas e intercambio de experiencias profesionales.',
+    featured: false,
+  },
+  {
+    date: '15 JUN 2020',
+    category: 'Café AMPD',
+    title: 'II Café Virtual de la AMPD: Efectos del Covid-19 en la Psicología del Deporte',
+    excerpt: 'Reunión online a través de Zoom sobre el papel de la psicología y su relevancia en la crisis sanitaria, exposición de experiencias propias durante la cuarentena, y reflexión sobre cómo afectará la post-pandemia.',
+    fullText: 'Temas tratados: rol del psicólogo del deporte durante el confinamiento, intrusismo profesional, regulación del teletrabajo, y necesidades emergentes de los deportistas. Asistieron 17 profesionales.',
+    featured: false,
+  },
+  {
+    date: '11 FEB 2020',
+    category: 'Café AMPD',
+    title: 'Primer Café de la AMPD: La Salud Mental en el Deporte de Alto Nivel',
+    excerpt: 'Sesión sobre psicología preventiva en el deporte, afrontamiento de lesiones, derivación clínica y factores del entrenamiento que pueden propiciar cuadros clínicos.',
+    fullText: 'Se trataron temas como el exceso de cargas, exceso de expectativas, identidad únicamente deportiva, formación de cara a la retirada deportiva, y el efecto de las redes sociales en deportes de pesos y estéticos.',
+    featured: false,
+  },
+  {
+    date: '31 JUL 2019',
+    category: 'Congreso',
+    title: 'XVII Congreso de Psicología de la Actividad Física y del Deporte',
+    excerpt: 'El próximo Congreso de la Federación se celebrará en Cantabria organizado por la APD-Cantabria, en la Universidad Europea del Atlántico (Santander).',
+    fullText: 'La UA tiene grados de Psicología y de Ciencias del Deporte, con buenas instalaciones deportivas. Se trabajará con el horizonte de marzo 2021.',
+    featured: false,
+  },
+];
+
+const categories = ['Todo', 'Actividades y Jornadas', 'Artículos profesionales', 'Noticias en radio'];
+---
+
+<Layout title="Noticias · AMPD" description="Noticias y actividades de la Asociación Madrileña de Psicología del Deporte.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Actualidad de la asociación</span>
+      <h1>Noticias.</h1>
+      <p class="lead">Webinars, jornadas, congresos, eventos y todo lo que se mueve dentro y alrededor de la AMPD.</p>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters reveal">
+        <span class="filter-label">Categorías:</span>
+        {categories.map((c, i) => (
+          <button class={`filter-btn ${i === 0 ? 'active' : ''}`}>{c}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <section class="news-section">
+    <div class="container">
+      {noticias.map((n, i) => (
+        <article class={`news-article reveal ${n.featured ? 'featured' : ''}`}>
+          <div class="news-meta">
+            <span class="news-date">{n.date}</span>
+            <span class="news-cat">{n.category}</span>
+          </div>
+          <div class="news-body">
+            <h2>{n.title}</h2>
+            <p class="excerpt">{n.excerpt}</p>
+            <p class="full-text">{n.fullText}</p>
+            <a href="#" class="read-more">Leer noticia completa →</a>
+          </div>
+        </article>
+      ))}
+
+      <div class="archive-section reveal">
+        <h3>Archivo</h3>
+        <div class="archive-list">
+          <a href="#">Junio 2026</a>
+          <a href="#">Mayo 2026</a>
+          <a href="#">Abril 2026</a>
+          <a href="#">Noviembre 2025</a>
+          <a href="#">Febrero 2021</a>
+          <a href="#">Junio 2020</a>
+          <a href="#">Febrero 2020</a>
+          <a href="#">Julio 2019</a>
+          <a href="#">Junio 2019</a>
+          <a href="#">Marzo 2019</a>
+          <a href="#">Febrero 2019</a>
+          <a href="#">Diciembre 2018</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  .page-hero h1 { margin: 1.5rem 0 1.5rem; }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    max-width: 50ch;
+    color: var(--ink-soft);
+  }
+
+  /* FILTROS */
+  .filters-section {
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+    padding: 1.5rem 0;
+  }
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-right: 0.5rem;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .filter-btn.active {
+    background: var(--flame);
+    color: var(--paper);
+    border-color: var(--flame);
+  }
+
+  /* NEWS */
+  .news-section { padding: 4rem 0; }
+  .news-article {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 4rem;
+    padding: 3rem 0;
+    border-bottom: 1.5px solid var(--ink);
+    transition: padding 0.3s ease;
+  }
+  .news-article:first-child { border-top: 1.5px solid var(--ink); }
+  .news-article:hover { padding-left: 1rem; }
+  @media (max-width: 800px) {
+    .news-article { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  .news-article.featured {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2.5rem;
+    border: 1.5px solid var(--ink);
+  }
+  .news-article.featured:hover { padding-left: 3rem; }
+  .news-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-self: start;
+  }
+  .news-date {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+  .news-cat {
+    display: inline-block;
+    background: var(--flame);
+    color: var(--paper);
+    padding: 0.3rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    width: fit-content;
+  }
+  .news-body h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .excerpt {
+    font-size: 1.1rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+  .featured .excerpt { color: rgba(245, 241, 232, 0.95); }
+  .full-text {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .featured .full-text { color: rgba(245, 241, 232, 0.7); }
+  .read-more {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--flame);
+    border-bottom: 1.5px solid var(--flame);
+    padding-bottom: 0.25rem;
+  }
+
+  /* ARCHIVO */
+  .archive-section {
+    margin-top: 4rem;
+    padding: 2.5rem 0;
+    border-top: 1.5px solid var(--ink);
+  }
+  .archive-section h3 {
+    margin-bottom: 1.5rem;
+  }
+  .archive-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .archive-list a {
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+  .archive-list a:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+</style>

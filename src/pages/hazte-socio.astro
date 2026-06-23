@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Hazte socio · AMPD" description="Cuotas, ventajas e inscripción a la Asociación Madrileña de Psicología del Deporte.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Membresía</span>
+      <h1>Hazte<br/><em>socio</em>.</h1>
+      <p class="lead">Únete a la red de profesionales y estudiantes que están moviendo la psicología del deporte en Madrid.</p>
+    </div>
+  </section>
+
+  <!-- CUOTA -->
+  <section class="cuota-section">
+    <div class="container">
+      <div class="cuota-grid">
+        <div class="cuota-text reveal">
+          <span class="eyebrow">¿Cuál es la cuota anual?</span>
+          <h2>Una cuota<br/>asequible<br/>y <em>sencilla</em>.</h2>
+          <p>El pago se realiza <strong>domiciliado</strong>.</p>
+        </div>
+
+        <div class="cuota-cards">
+          <div class="cuota-card cuota-pro reveal">
+            <span class="cuota-tag">Profesional</span>
+            <div class="cuota-price">
+              <span class="amount">50</span>
+              <span class="currency">€</span>
+              <span class="period">/año</span>
+            </div>
+            <p>Cuota anual estándar para profesionales asociados.</p>
+          </div>
+
+          <div class="cuota-card cuota-est reveal">
+            <span class="cuota-tag">Estudiante</span>
+            <div class="cuota-price">
+              <span class="amount">25</span>
+              <span class="currency">€</span>
+              <span class="period">/año</span>
+            </div>
+            <p>Esta cuota se mantendrá durante el primer año, válida tanto para estudiantes de grado como de máster, con independencia del curso al que pertenezcan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTAJAS -->
+  <!-- CÓMO INSCRIBIRSE -->
+  <section class="how-to-join">
+    <div class="container">
+      <div class="join-card reveal">
+        <span class="eyebrow" style="color: var(--flame);">¿Cómo inscribirse?</span>
+        <h2>Rellena la ficha<br/>de <em>inscripción</em>.</h2>
+        <p>Completa el formulario de inscripción con tus datos y nos pondremos en contacto contigo para confirmar tu alta como asociado/a.</p>
+        <a href="/inscripcion" class="btn btn-primary">
+          Inscribirme ahora
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  .page-hero h1 { margin: 1.5rem 0 1.5rem; }
+  .page-hero h1 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    max-width: 50ch;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* CUOTA */
+  .cuota-section {
+    border-top: 1.5px solid var(--ink);
+    padding-top: 5rem;
+  }
+  .cuota-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .cuota-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  .cuota-text h2 { margin: 1.5rem 0 1.5rem; }
+  .cuota-text h2 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .cuota-text p { font-size: 1.1rem; color: var(--ink-soft); }
+
+  .cuota-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    .cuota-cards { grid-template-columns: 1fr; }
+  }
+  .cuota-card {
+    padding: 2.5rem 2rem;
+    border: 1.5px solid var(--ink);
+    transition: all 0.3s ease;
+  }
+  .cuota-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .cuota-pro {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .cuota-pro:hover { box-shadow: 8px 8px 0 var(--flame); }
+  .cuota-est { background: var(--paper-pure); }
+
+  .cuota-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--flame);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .cuota-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-display);
+  }
+  .cuota-pro .cuota-price { border-color: rgba(245, 241, 232, 0.2); }
+  .cuota-price .amount {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .cuota-price .currency { font-size: 1.5rem; font-weight: 700; }
+  .cuota-price .period {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-left: 0.5rem;
+  }
+  .cuota-pro .cuota-price .period { color: rgba(245, 241, 232, 0.6); }
+  .cuota-card p { line-height: 1.55; font-size: 0.95rem; }
+  .cuota-pro p { color: rgba(245, 241, 232, 0.85); }
+  .cuota-est p { color: var(--ink-soft); }
+
+  /* BENEFITS */
+  .benefits {
+    padding-top: 6rem;
+  }
+  .section-header { margin-bottom: 4rem; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  @media (max-width: 700px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+  .benefit {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s ease;
+  }
+  .benefit:nth-child(2n) { border-right: none; }
+  .benefit:hover { background: var(--paper-pure); }
+  .benefit .num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--flame);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .benefit h3 { margin-bottom: 1rem; }
+  .benefit p { color: var(--ink-soft); line-height: 1.6; }
+
+  /* HOW TO JOIN */
+  .how-to-join { padding-top: 5rem; }
+  .join-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(3rem, 6vw, 5rem);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .join-card::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--flame) 0%, transparent 70%);
+    opacity: 0.25;
+    border-radius: 50%;
+  }
+  .join-card > * { position: relative; z-index: 2; }
+  .join-card .eyebrow { justify-content: center; margin-bottom: 1.5rem; }
+  .join-card .eyebrow::before { display: none; }
+  .join-card h2 { margin-bottom: 1.5rem; }
+  .join-card h2 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .join-card p {
+    max-width: 50ch;
+    margin: 0 auto 2.5rem;
+    color: rgba(245, 241, 232, 0.8);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+</style>

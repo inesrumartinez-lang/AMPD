@@ -1,0 +1,707 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Ficha de inscripción · AMPD" description="Formulario de inscripción a la Asociación Madrileña de Psicología del Deporte.">
+  <section class="insc-hero">
+    <div class="container">
+      <span class="eyebrow">Hazte socio</span>
+      <h1>Ficha de<br/><em>inscripción</em>.</h1>
+      <p class="lead">Completa tus datos para formalizar tu alta como asociado/a de la AMPD. Los campos marcados con <span class="req-mark">*</span> son obligatorios.</p>
+    </div>
+  </section>
+
+  <section class="insc-form-section">
+    <div class="container container-narrow">
+      <form id="ampdForm" novalidate>
+
+        <!-- 1. DATOS PERSONALES -->
+        <div class="form-block">
+          <div class="block-title">
+            <span class="block-num">01</span> Datos personales
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="nombre">Nombre <span class="req">*</span></label>
+              <input type="text" id="nombre" name="nombre" required autocomplete="given-name">
+              <span class="field-error" id="nombre-error">Campo obligatorio</span>
+            </div>
+            <div class="field-group">
+              <label for="apellidos">Apellidos <span class="req">*</span></label>
+              <input type="text" id="apellidos" name="apellidos" required autocomplete="family-name">
+              <span class="field-error" id="apellidos-error">Campo obligatorio</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="dni">DNI / NIE <span class="req">*</span></label>
+              <input type="text" id="dni" name="dni" required placeholder="12345678A" maxlength="12">
+              <span class="field-error" id="dni-error">Introduce un DNI/NIE válido</span>
+            </div>
+            <div class="field-group">
+              <label for="email">E-mail <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="tu@email.com">
+              <span class="field-error" id="email-error">Introduce un email válido</span>
+            </div>
+          </div>
+          <div class="field-row single">
+            <div class="field-group">
+              <label for="direccion">Dirección postal</label>
+              <input type="text" id="direccion" name="direccion" autocomplete="street-address">
+            </div>
+          </div>
+          <div class="field-row triple">
+            <div class="field-group">
+              <label for="cp">Código Postal</label>
+              <input type="text" id="cp" name="cp" maxlength="5" inputmode="numeric" autocomplete="postal-code">
+            </div>
+            <div class="field-group">
+              <label for="poblacion">Población</label>
+              <input type="text" id="poblacion" name="poblacion" autocomplete="address-level2">
+            </div>
+            <div class="field-group">
+              <label for="provincia">Provincia</label>
+              <input type="text" id="provincia" name="provincia" autocomplete="address-level1">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel">
+            </div>
+            <div class="field-group"></div>
+          </div>
+        </div>
+
+        <!-- 2. PERFIL ACADÉMICO -->
+        <div class="form-block">
+          <div class="block-title">
+            <span class="block-num">02</span> Perfil académico y profesional
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="grado">Licenciatura / Grado en</label>
+              <input type="text" id="grado" name="grado" placeholder="Ej: Psicología">
+            </div>
+            <div class="field-group">
+              <label for="colegiado">Nº Colegiado</label>
+              <input type="text" id="colegiado" name="colegiado">
+            </div>
+          </div>
+          <div class="field-row single">
+            <div class="field-group">
+              <label for="estudiante">Matriculado en (si es estudiante)</label>
+              <input type="text" id="estudiante" name="estudiante" placeholder="Ej: Máster en Psicología del Deporte, UAM">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. ESPECIALIZACIÓN -->
+        <div class="form-block">
+          <div class="block-title">
+            <span class="block-num">03</span> Especialización y áreas de interés
+          </div>
+          <div class="field-row single">
+            <div class="field-group">
+              <label for="disciplina">Disciplina(s) deportiva(s) de especialidad</label>
+              <input type="text" id="disciplina" name="disciplina" placeholder="Ej: Fútbol, atletismo, ciclismo...">
+            </div>
+          </div>
+
+          <div class="field-group" style="margin-bottom: 1.5rem;">
+            <label>Perfil de actividad predominante</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="perfil" value="Investigación"> <span>Investigación</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="perfil" value="Formación / Docencia"> <span>Formación / Docencia</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="perfil" value="Aplicación Práctica"> <span>Aplicación Práctica</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Intereses principales</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Deporte de base e iniciación"> <span>Deporte de base e iniciación</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Alto rendimiento"> <span>Alto rendimiento</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Deporte y Salud / Bienestar"> <span>Deporte y Salud / Bienestar</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Prevención y recuperación de lesiones"> <span>Prevención y recuperación de lesiones</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Coaching deportivo"> <span>Coaching deportivo</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Gestión y asesoramiento deportivo"> <span>Gestión y asesoramiento deportivo</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Arbitraje y juicio deportivo"> <span>Arbitraje y juicio deportivo</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="intereses" value="Colectivos específicos"> <span>Colectivos específicos</span></label>
+            </div>
+          </div>
+          <div class="field-row single" style="margin-top: 1rem;">
+            <div class="field-group">
+              <label for="otros_intereses">Otros intereses</label>
+              <input type="text" id="otros_intereses" name="otros_intereses" placeholder="Especificar...">
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. DATOS DE PAGO -->
+        <div class="form-block">
+          <div class="block-title">
+            <span class="block-num">04</span> Datos de pago (domiciliación bancaria)
+          </div>
+          <div class="field-row single">
+            <div class="field-group">
+              <label for="iban">IBAN <span class="req">*</span></label>
+              <div class="iban-wrapper">
+                <span class="iban-prefix">ES</span>
+                <input type="text" id="iban" name="iban" required placeholder="00 0000 0000 00 0000000000" maxlength="26" inputmode="numeric" autocomplete="off">
+              </div>
+              <span class="field-error" id="iban-error">Introduce un IBAN válido (22 dígitos tras ES)</span>
+            </div>
+          </div>
+          <p class="secure-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <span>Tus datos bancarios se transmiten de forma segura y solo serán utilizados para la domiciliación de la cuota anual.</span>
+          </p>
+        </div>
+
+        <!-- 5. FIRMA Y CONSENTIMIENTO -->
+        <div class="form-block">
+          <div class="block-title">
+            <span class="block-num">05</span> Formalización y firma
+          </div>
+
+          <div class="gdpr-text">
+            El socio expresamente consiente que los datos personales proporcionados como consecuencia de su afiliación serán incorporados y tratados en el inventario denominado "Asociados", titularidad de la Asociación Madrileña de Psicología del Deporte, cuya única finalidad es la de enviar información de la propia Asociación y de actividades relacionadas con la Psicología del Deporte. Dichos datos serán tratados conforme al Reglamento (UE) 2016/679 (RGPD) y no serán cedidos a terceros, con excepción de aquellos casos necesarios para el cumplimiento de los objetivos de la AMPD.
+            <br><br>
+            El interesado podrá ejercer los derechos de acceso, rectificación, supresión y oposición, así como limitación y portabilidad de los datos a través de <a href="mailto:ampdmadrid@gmail.com">ampdmadrid@gmail.com</a>.
+          </div>
+
+          <label class="gdpr-consent">
+            <input type="checkbox" id="consentimiento" name="consentimiento" required>
+            <span>He leído y acepto el tratamiento de mis datos personales según lo descrito. <span class="req">*</span></span>
+          </label>
+          <span class="field-error" id="consentimiento-error" style="margin-left: 1.75rem;">Debes aceptar el consentimiento</span>
+
+          <div class="field-group" style="margin-top: 1.5rem;">
+            <label>Firma <span class="req">*</span></label>
+            <div class="signature-area">
+              <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+              <div class="signature-actions">
+                <button type="button" class="btn-clear" id="clearSignature">Borrar firma</button>
+              </div>
+              <span class="field-error" id="firma-error">La firma es obligatoria</span>
+            </div>
+          </div>
+
+          <div class="submit-wrapper">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Enviar inscripción
+              <span class="arrow">→</span>
+            </button>
+          </div>
+
+          <div class="form-status" id="formStatus"></div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // CONFIGURACIÓN — URL del Apps Script
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyjlexaWVRp3y60cgEPKAvisSY-5MBtNROeNKP1WT9W7hYfYD1FUhVn3DWgFoedkWGO/exec';
+
+  // ===== FIRMA DIGITAL (Canvas) =====
+  const canvas = document.getElementById('signatureCanvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  let isDrawing = false;
+  let hasSigned = false;
+  let lastPoint: { x: number; y: number } | null = null;
+
+  function setupCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    ctx.strokeStyle = '#0A1628';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+  }
+  setupCanvas();
+  window.addEventListener('resize', () => { if (!hasSigned) setupCanvas(); });
+
+  function getPos(e: MouseEvent | TouchEvent) {
+    const rect = canvas.getBoundingClientRect();
+    const touch = (e as TouchEvent).touches ? (e as TouchEvent).touches[0] : (e as MouseEvent);
+    return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+  }
+  function startDraw(e: MouseEvent | TouchEvent) {
+    isDrawing = true;
+    lastPoint = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(lastPoint.x, lastPoint.y);
+    ctx.lineTo(lastPoint.x + 0.1, lastPoint.y + 0.1);
+    ctx.stroke();
+  }
+  function draw(e: MouseEvent | TouchEvent) {
+    if (!isDrawing || !lastPoint) return;
+    const p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(lastPoint.x, lastPoint.y);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    lastPoint = p;
+    hasSigned = true;
+    canvas.classList.add('signed');
+  }
+  function stopDraw() { isDrawing = false; lastPoint = null; }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDraw);
+  canvas.addEventListener('mouseleave', stopDraw);
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDraw(e); }, { passive: false });
+  canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); }, { passive: false });
+  canvas.addEventListener('touchend', (e) => { e.preventDefault(); stopDraw(); }, { passive: false });
+
+  document.getElementById('clearSignature')!.addEventListener('click', () => {
+    setupCanvas();
+    hasSigned = false;
+    canvas.classList.remove('signed');
+  });
+
+  // ===== FORMATEO IBAN =====
+  (document.getElementById('iban') as HTMLInputElement).addEventListener('input', function (this: HTMLInputElement) {
+    let val = this.value.replace(/\s/g, '').replace(/[^0-9]/g, '');
+    let formatted = '';
+    for (let i = 0; i < val.length; i++) {
+      if (i > 0 && i % 4 === 0) formatted += ' ';
+      formatted += val[i];
+    }
+    this.value = formatted;
+  });
+
+  // ===== VALIDACIÓN =====
+  function showError(id: string) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'block';
+    const input = (el?.previousElementSibling as HTMLElement) || document.getElementById(id.replace('-error', ''));
+    if (input?.classList) input.classList.add('error');
+  }
+  function hideAllErrors() {
+    document.querySelectorAll('.field-error').forEach(e => (e as HTMLElement).style.display = 'none');
+    document.querySelectorAll('.error').forEach(e => e.classList.remove('error'));
+  }
+  function validateForm() {
+    hideAllErrors();
+    let valid = true;
+    const nombre = (document.getElementById('nombre') as HTMLInputElement).value.trim();
+    if (!nombre) { showError('nombre-error'); valid = false; }
+    const apellidos = (document.getElementById('apellidos') as HTMLInputElement).value.trim();
+    if (!apellidos) { showError('apellidos-error'); valid = false; }
+    const dni = (document.getElementById('dni') as HTMLInputElement).value.trim();
+    if (!dni || dni.length < 8) { showError('dni-error'); valid = false; }
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('email-error'); valid = false; }
+    const iban = (document.getElementById('iban') as HTMLInputElement).value.replace(/\s/g, '');
+    if (!iban || iban.length < 20) { showError('iban-error'); valid = false; }
+    const consentimiento = (document.getElementById('consentimiento') as HTMLInputElement).checked;
+    if (!consentimiento) { showError('consentimiento-error'); valid = false; }
+    if (!hasSigned) { showError('firma-error'); valid = false; }
+    return valid;
+  }
+
+  // ===== ENVÍO =====
+  document.getElementById('ampdForm')!.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!validateForm()) {
+      const firstError = document.querySelector('.field-error[style*="block"]');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn') as HTMLButtonElement;
+    const status = document.getElementById('formStatus')!;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Enviando...';
+    status.style.display = 'none';
+
+    const intereses = [...document.querySelectorAll('input[name="intereses"]:checked')].map(c => (c as HTMLInputElement).value);
+    const perfilRadio = document.querySelector('input[name="perfil"]:checked') as HTMLInputElement | null;
+    const firmaBase64 = canvas.toDataURL('image/png');
+    const getVal = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
+
+    const data = {
+      timestamp: new Date().toISOString(),
+      nombre: getVal('nombre'),
+      apellidos: getVal('apellidos'),
+      dni: getVal('dni'),
+      email: getVal('email'),
+      direccion: getVal('direccion'),
+      cp: getVal('cp'),
+      poblacion: getVal('poblacion'),
+      provincia: getVal('provincia'),
+      telefono: getVal('telefono'),
+      grado: getVal('grado'),
+      colegiado: getVal('colegiado'),
+      estudiante: getVal('estudiante'),
+      disciplina: getVal('disciplina'),
+      perfil: perfilRadio ? perfilRadio.value : '',
+      intereses: intereses.join(', '),
+      otros_intereses: getVal('otros_intereses'),
+      iban: 'ES' + (document.getElementById('iban') as HTMLInputElement).value.replace(/\s/g, ''),
+      firma: firmaBase64
+    };
+
+    try {
+      await fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
+
+      document.getElementById('ampdForm')!.style.display = 'none';
+      const confirmScreen = document.createElement('div');
+      confirmScreen.className = 'confirm-screen';
+      confirmScreen.innerHTML = `
+        <div class="confirm-check">✓</div>
+        <h2>¡Inscripción enviada correctamente!</h2>
+        <p>Hemos recibido tu solicitud de inscripción a la AMPD. Nos pondremos en contacto contigo a través de tu email (<strong>${data.email}</strong>) para confirmar tu alta como asociado/a.</p>
+        <p class="confirm-small">Si tienes alguna duda, escríbenos a <a href="mailto:ampdmadrid@gmail.com">ampdmadrid@gmail.com</a></p>
+        <a href="/" class="btn btn-primary" style="margin-top: 2rem;">Volver al inicio →</a>
+      `;
+      document.querySelector('.container-narrow')!.appendChild(confirmScreen);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (error) {
+      status.className = 'form-status error-msg';
+      status.textContent = '✗ Error al enviar. Por favor, inténtalo de nuevo o contacta a ampdmadrid@gmail.com';
+      status.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = 'Enviar inscripción';
+      console.error('Error:', error);
+    }
+  });
+</script>
+
+<style>
+  .insc-hero {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  .insc-hero h1 { margin: 1.5rem 0 1.5rem; }
+  .insc-hero h1 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    max-width: 55ch;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .req-mark, .req { color: var(--flame); }
+
+  .container-narrow {
+    max-width: 760px;
+  }
+
+  .insc-form-section {
+    border-top: 1.5px solid var(--ink);
+    padding-top: 3rem;
+  }
+
+  /* BLOQUES */
+  .form-block {
+    background: var(--paper-pure);
+    border: 1.5px solid var(--ink);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    .form-block { padding: 1.5rem; }
+  }
+  .block-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--flame);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .block-num {
+    background: var(--ink);
+    color: var(--paper);
+    width: 36px; height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* CAMPOS */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .field-row.single { grid-template-columns: 1fr; }
+  .field-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 600px) {
+    .field-row, .field-row.triple { grid-template-columns: 1fr; }
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .field-group label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .field-group input,
+  .field-group select,
+  .field-group textarea {
+    padding: 0.75rem 0.9rem;
+    border: 1.5px solid var(--line-strong);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: var(--paper);
+    width: 100%;
+  }
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    outline: none;
+    border-color: var(--flame);
+    box-shadow: 0 0 0 3px rgba(255, 77, 31, 0.12);
+  }
+  .field-group input.error {
+    border-color: var(--flame);
+    box-shadow: 0 0 0 3px rgba(255, 77, 31, 0.1);
+  }
+  .field-error {
+    color: var(--flame);
+    font-size: 0.78rem;
+    margin-top: 0.3rem;
+    display: none;
+    font-weight: 600;
+  }
+
+  /* IBAN */
+  .iban-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .iban-prefix {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .iban-wrapper input {
+    letter-spacing: 0.12em;
+    font-variant-numeric: tabular-nums;
+  }
+  .secure-note {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .secure-note svg { flex-shrink: 0; margin-top: 2px; color: var(--flame); }
+
+  /* CHECKBOXES */
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 600px) {
+    .checkbox-grid { grid-template-columns: 1fr; }
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: background 0.15s;
+  }
+  .checkbox-item:hover { background: rgba(255, 77, 31, 0.05); }
+  .checkbox-item input[type="checkbox"] {
+    width: 18px; height: 18px;
+    margin-top: 1px;
+    accent-color: var(--flame);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  /* RADIO */
+  .radio-group {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 600px) {
+    .radio-group { flex-direction: column; gap: 0.5rem; }
+  }
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.45rem 0.7rem;
+    transition: background 0.15s;
+  }
+  .radio-item:hover { background: rgba(255, 77, 31, 0.05); }
+  .radio-item input[type="radio"] { accent-color: var(--flame); cursor: pointer; }
+
+  /* FIRMA */
+  .signature-canvas {
+    width: 100%;
+    height: 160px;
+    border: 1.5px dashed var(--line-strong);
+    cursor: crosshair;
+    touch-action: none;
+    background: var(--paper);
+  }
+  .signature-canvas.signed {
+    border-style: solid;
+    border-color: var(--flame);
+  }
+  .signature-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+  .btn-clear {
+    background: none;
+    border: 1px solid var(--line-strong);
+    padding: 0.4rem 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    cursor: pointer;
+    color: var(--ink-soft);
+    transition: all 0.15s;
+  }
+  .btn-clear:hover { border-color: var(--flame); color: var(--flame); }
+
+  /* GDPR */
+  .gdpr-text {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    padding: 1.25rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    margin-bottom: 1rem;
+  }
+  .gdpr-text a { color: var(--flame); text-decoration: underline; }
+  .gdpr-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+    cursor: pointer;
+  }
+  .gdpr-consent input { margin-top: 3px; accent-color: var(--flame); width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* SUBMIT */
+  .submit-wrapper { margin-top: 2rem; }
+  .btn-submit {
+    background: var(--flame);
+    color: var(--paper-pure);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .btn-submit:hover {
+    background: var(--flame-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(255, 77, 31, 0.4);
+  }
+  .btn-submit:disabled { background: #999; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-submit .arrow { transition: transform 0.3s ease; }
+  .btn-submit:hover .arrow { transform: translateX(4px); }
+
+  /* STATUS */
+  .form-status {
+    padding: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    display: none;
+  }
+  .form-status.error-msg {
+    display: block;
+    background: rgba(255, 77, 31, 0.1);
+    color: var(--flame-deep);
+    border: 1px solid var(--flame);
+  }
+
+  /* SPINNER */
+  .spinner {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* CONFIRMACIÓN */
+  .confirm-screen {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 2.5rem;
+    text-align: center;
+  }
+  .confirm-check {
+    width: 80px; height: 80px;
+    background: var(--flame);
+    color: var(--paper);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 2.5rem;
+    margin: 0 auto 1.5rem;
+  }
+  .confirm-screen h2 { margin-bottom: 1rem; }
+  .confirm-screen p {
+    color: rgba(245, 241, 232, 0.8);
+    max-width: 460px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+  }
+  .confirm-small { font-size: 0.9rem; }
+  .confirm-screen a { color: var(--flame); }
+  .confirm-screen .btn-primary { color: var(--paper-pure); }
+</style>

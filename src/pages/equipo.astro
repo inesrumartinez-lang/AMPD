@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  {
+    name: 'Miguel Santolaya',
+    role: 'Presidente de la AMPD',
+    photo: '/equipo/miguel.png',
+    bio: 'Licenciado en Psicología, Máster en Psicología del Deporte y Psicooncología. Profesor universitario, combinando labores de investigación, formación y aplicación profesional en contextos deportivos.',
+  },
+  {
+    name: 'Rafael Mateos',
+    role: 'Vicepresidente de la AMPD',
+    photo: '/equipo/rafael.png',
+    bio: 'Doctor en Psicología por la Universidad Autónoma de Madrid, con mención Cum Laude. Profesor universitario y especialista en evaluación e intervención psicológica en el ámbito deportivo. Compagina su labor académica e investigadora —con publicaciones en revistas internacionales de alto impacto— con la práctica profesional con personas y grupos del entorno deportivo.',
+  },
+  {
+    name: 'María Blanco',
+    role: 'Secretaria de la AMPD',
+    photo: '/equipo/maria.png',
+    bio: 'Psicóloga Deportiva por la Universidad Autónoma de Madrid. CEO de Train Your Mind (TYM). Ex-futbolista y entrenadora con experiencia en el alto rendimiento en territorio nacional e internacional en clubes como FC Juárez. Vocación por la formación y el desarrollo global del deportista.',
+  },
+  {
+    name: 'Félix Marquiegui',
+    role: 'Tesorero de la AMPD',
+    photo: '/equipo/felix.png',
+    bio: 'Colegiado número M-36550. Psicólogo deportivo y general sanitario. Actualmente, desarrolla su labor orientada al alto rendimiento. Responsable de la Unidad de Psicología del Centro de Alto Rendimiento de Madrid. Vocación aplicada y apasionado de su trabajo.',
+  },
+  {
+    name: 'Inés C. Ruiz',
+    role: 'Vocal de Comunicación y Difusión en Medios de la AMPD',
+    photo: '/equipo/ines.png',
+    bio: 'Psicóloga deportiva por la Universidad Autónoma de Madrid. Actualmente desarrolla su labor doctoral centrando su línea de estudio en los deportes de resistencia. Experta en implementación de soluciones tecnológicas aplicadas a la psicología deportiva.',
+  },
+];
+---
+
+<Layout title="Equipo · AMPD" description="La junta directiva de la Asociación Madrileña de Psicología del Deporte.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Junta directiva</span>
+      <h1>El<br/><em>equipo</em>.</h1>
+      <p class="lead">Las personas que integran la junta directiva de la AMPD. Pasa el ratón o pulsa sobre cada miembro para conocerle.</p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <div class="team-grid">
+        {team.map((p) => (
+          <button class="team-card" type="button" data-team-card aria-expanded="false">
+            <div class="card-inner">
+              <!-- CARA FRONTAL -->
+              <div class="card-front">
+                <div class="photo-wrap">
+                  <img src={p.photo} alt={p.name} loading="lazy" />
+                </div>
+                <span class="role-tag">{p.role}</span>
+                <h3>{p.name}</h3>
+                <span class="hint">Ver biografía →</span>
+              </div>
+              <!-- CARA TRASERA -->
+              <div class="card-back">
+                <div class="photo-wrap photo-wrap--small">
+                  <img src={p.photo} alt={p.name} loading="lazy" />
+                </div>
+                <span class="back-role">{p.role}</span>
+                <h3 class="back-name">{p.name}</h3>
+                <p class="back-bio">{p.bio}</p>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>('[data-team-card]');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const isOpen = card.classList.toggle('flipped');
+      card.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  .page-hero h1 { margin: 1.5rem 0 1.5rem; }
+  .page-hero h1 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    max-width: 50ch;
+    color: var(--ink-soft);
+  }
+
+  .team-section {
+    border-top: 1.5px solid var(--ink);
+    padding-top: 5rem;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 580px) { .team-grid { grid-template-columns: 1fr; } }
+
+  /* TARJETA */
+  .team-card {
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
+    perspective: 1200px;
+    min-height: 420px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .team-card:hover .card-inner,
+  .team-card.flipped .card-inner,
+  .team-card:focus-visible .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 2rem 1.75rem;
+    border: 1.5px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-front {
+    background: var(--paper-pure);
+  }
+
+  .card-back {
+    background: var(--ink);
+    color: var(--paper);
+    transform: rotateY(180deg);
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  /* FOTO */
+  .photo-wrap {
+    width: 130px;
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--flame);
+    flex-shrink: 0;
+  }
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .photo-wrap--small {
+    width: 70px;
+    height: 85px;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--flame);
+  }
+
+  /* FRONT */
+  .role-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--flame);
+    margin-bottom: 0.6rem;
+    display: block;
+    line-height: 1.3;
+  }
+  .card-front h3 {
+    margin-bottom: auto;
+    padding-bottom: 1.25rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  }
+  .hint {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--flame);
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    width: 100%;
+    text-align: center;
+  }
+
+  /* BACK */
+  .back-role {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--flame);
+    margin-bottom: 0.4rem;
+    display: block;
+    line-height: 1.3;
+  }
+  .back-name {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(245, 241, 232, 0.2);
+    width: 100%;
+  }
+  .back-bio {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(245, 241, 232, 0.9);
+    overflow-y: auto;
+  }
+
+  /* Sombra al voltear */
+  .team-card:hover .card-front,
+  .team-card:hover .card-back,
+  .team-card.flipped .card-front,
+  .team-card.flipped .card-back {
+    box-shadow: 8px 8px 0 var(--flame);
+  }
+
+  .team-card:focus-visible {
+    outline: 2px solid var(--flame);
+    outline-offset: 4px;
+  }
+</style>

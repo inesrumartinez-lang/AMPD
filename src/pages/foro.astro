@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Foro · AMPD" description="Foro de la Asociación Madrileña de Psicología del Deporte.">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Espacio de socios</span>
+      <h1>Foro<br/><em>AMPD</em>.</h1>
+      <p class="lead">Espacio de intercambio para profesionales y estudiantes asociados.</p>
+    </div>
+  </section>
+
+  <section class="foro-section">
+    <div class="container">
+      <div class="foro-card reveal">
+        <div class="foro-content">
+          <span class="status-badge">En desarrollo</span>
+          <h2>Próximamente</h2>
+          <p>El foro está siendo preparado para una mejor experiencia de uso. Mientras tanto, los socios pueden seguir intercambiando información a través de:</p>
+
+          <div class="alt-channels">
+            <div class="channel">
+              <span class="channel-num">01</span>
+              <div>
+                <h3>Grupo de Facebook</h3>
+                <p>Espacio activo donde compartir casos, lecturas y experiencia clínica.</p>
+              </div>
+            </div>
+            <div class="channel">
+              <span class="channel-num">02</span>
+              <div>
+                <h3>Lista de correo</h3>
+                <p>Difusión de jornadas, eventos y novedades del campo profesional.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="/contacto" class="btn btn-primary">
+            Contactar para acceso
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  .page-hero h1 { margin: 1.5rem 0 1.5rem; }
+  .page-hero h1 em { color: var(--flame); font-style: italic; font-weight: 400; }
+  .lead {
+    font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+    max-width: 50ch;
+    color: var(--ink-soft);
+  }
+
+  .foro-section {
+    border-top: 1.5px solid var(--ink);
+    padding-top: 4rem;
+  }
+  .foro-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(3rem, 6vw, 5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .foro-card::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--flame) 0%, transparent 70%);
+    opacity: 0.25;
+    border-radius: 50%;
+  }
+  .foro-content { position: relative; z-index: 2; max-width: 700px; }
+  .status-badge {
+    display: inline-block;
+    background: var(--flame);
+    color: var(--paper);
+    padding: 0.4rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .foro-card h2 { margin-bottom: 1.5rem; }
+  .foro-card > .foro-content > p {
+    color: rgba(245, 241, 232, 0.85);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  .alt-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(245, 241, 232, 0.2);
+    border-bottom: 1px solid rgba(245, 241, 232, 0.2);
+  }
+  .channel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .channel-num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--flame);
+  }
+  .channel h3 { margin-bottom: 0.5rem; font-size: 1.5rem; }
+  .channel p {
+    color: rgba(245, 241, 232, 0.75);
+    line-height: 1.5;
+  }
+</style>

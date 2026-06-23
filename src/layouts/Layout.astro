@@ -1,0 +1,321 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'AMPD — Asociación Madrileña de Psicología del Deporte',
+  description = 'Promocionando la Psicología del Deporte en la Comunidad de Madrid.'
+} = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/informacion', label: 'Información de interés' },
+  { href: '/noticias', label: 'Noticias' },
+  { href: '/equipo', label: 'Equipo' },
+  { href: '/contacto', label: 'Contacto' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="/logo-ampd.png" alt="Logo AMPD" class="logo-img" />
+        <span class="logo-text">
+          <strong>AMPD</strong>
+          <small>Psicología del Deporte · Madrid</small>
+        </span>
+      </a>
+
+      <nav class="nav-desktop">
+        {navItems.map(item => (
+          <a href={item.href} class={`nav-link ${Astro.url.pathname === item.href || Astro.url.pathname === item.href + '/' ? 'active' : ''}`}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <a href="/hazte-socio" class="btn btn-primary header-cta">
+        Hazte socio
+        <span class="arrow">→</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Menú" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="nav-mobile">
+      {navItems.map(item => (
+        <a href={item.href} class="nav-link-mobile">{item.label}</a>
+      ))}
+      <a href="/hazte-socio" class="btn btn-primary" style="margin-top: 1rem;">
+        Hazte socio →
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="/logo-ampd.png" alt="Logo AMPD" class="footer-logo-img" />
+            <strong>AMPD</strong>
+          </div>
+          <p>Asociación Madrileña de<br/>Psicología del Deporte</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navegación</h4>
+          <ul class="footer-links">
+            {navItems.map(item => (
+              <li><a href={item.href}>{item.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Conecta</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/ampdmadrid" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://twitter.com/AMPDMadrid" target="_blank" rel="noopener">Twitter / X</a></li>
+            <li><a href="/contacto">Email</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacidad">Privacidad</a></li>
+            <li><a href="/aviso-legal">Aviso legal</a></li>
+            <li><a href="/cookies">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} AMPD. Todos los derechos reservados.</span>
+        <span class="footer-tag">Madrid · España</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-mobile');
+    toggle?.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      nav?.classList.toggle('open');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245, 241, 232, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    gap: 1.5rem;
+  }
+  .logo { display: flex; align-items: center; gap: 0.75rem; }
+  .logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .logo:hover .logo-img { transform: scale(1.05); }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text strong {
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .logo-text small {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    margin-top: 0.15rem;
+  }
+  .nav-desktop {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+    margin-right: 1.5rem;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px; width: 0;
+    background: var(--flame);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after { width: 100%; }
+  .nav-link.active { color: var(--flame); }
+  .header-cta { padding: 0.7rem 1.25rem; font-size: 0.9rem; }
+  .menu-toggle {
+    display: none; background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px; padding: 8px;
+  }
+  .menu-toggle span {
+    width: 24px; height: 2px; background: var(--ink);
+    transition: all 0.3s ease;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 0 var(--gutter) 2rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-mobile.open { display: flex; }
+  .nav-link-mobile {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 700;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 1100px) {
+    .nav-desktop, .header-cta { display: none; }
+    .menu-toggle { display: flex; }
+  }
+
+  .site-footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5rem 0 2rem;
+    margin-top: 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-footer::before {
+    content: 'AMPD';
+    position: absolute;
+    bottom: -4rem; right: -2rem;
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 25vw, 22rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  .footer-logo {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 800;
+  }
+  .footer-logo-img {
+    height: 40px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+  .footer-brand p {
+    color: rgba(245, 241, 232, 0.7);
+    font-size: 1.05rem; line-height: 1.4;
+  }
+  .footer-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--flame);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .footer-links a {
+    color: rgba(245, 241, 232, 0.85);
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
+  }
+  .footer-links a:hover { color: var(--flame); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245, 241, 232, 0.1);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: rgba(245, 241, 232, 0.5);
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 600px) {
+    .footer-bottom { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
